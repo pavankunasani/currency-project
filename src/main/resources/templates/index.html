@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $.get("http://localhost:8080/currency", function(data, status){
+    	 // ITERATING THROUGH OBJECTS 
+    	 
+    	 var student = '';
+    	 student+='<table>';
+    	 student+='<tr> <th>Currency</th> <th>Month1</th> <th>Month2</th> <th>Month3</th> <th>Month4</th> <th>Month5</th> <th>Month6</th> </tr>';
+    	 
+        $.each(data, function (key, value) { 
+
+        	 console.log(value,key);
+        	 
+              student += '<tr>'; 
+              student += '<td>' +  
+              key + '</td>'; 
+            student += '<td>' +  
+                value[0] + '</td>'; 
+
+            student += '<td>' +  
+            value[1] + '</td>'; 
+
+            student += '<td>' +  
+                value[2] + '</td>'; 
+
+            student += '<td>' +  
+            value[3] + '</td>'; 
+            student += '<td>' +  
+            value[4] + '</td>';
+            student += '<td>' +  
+            value[5] + '</td>';
+       
+
+            student += '</tr>';  
+	
+    });
+        student+='</table>';
+        $('#tabledata').append(student); 
+  });
+});
+});
+</script>
+</head>
+<body>
+
+<button>call </button>
+
+<table id="tabledata">
+
+</table>
+
+
+
+
+</body>
+</html>
